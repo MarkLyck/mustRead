@@ -7,7 +7,7 @@ import ConfirmModal from './confirmationModal'
 
 const DocModal = React.createClass({
   getInitialState: function() {
-    if (store.session.get('read').indexOf(this.props.doc.id) === -1) {
+    if (store.session.get('read').indexOf(this.props.doc._id) === -1) {
       return {showModal: false, confirmed: false, seenBottom: false}
     } else {
       return {showModal: false, confirmed: true, seenBottom: false}
@@ -30,6 +30,7 @@ const DocModal = React.createClass({
     }
   },
   componentDidMount: function() {
+    console.log(this.refs.docCheckbox);
     store.session.on('change', this.setSeenBottom)
   },
   componentWillUnmount: function() {
@@ -56,16 +57,15 @@ const DocModal = React.createClass({
     }
 
     let checkBox = (<input
-
+      onChange={this.showModal}
       id="doc-checkbox"
       type="checkbox"
-      ref="doc-checkbox"
+      ref="docCheckbox"
       checked={this.state.confirmed}
       disabled={this.state.confirmed}/>)
 
+
     let markAsRead;
-
-
     console.log('seenBottom: ', this.state.seenBottom);
     if (!this.state.seenBottom) {
       console.log('### HAVNT SEEN BOTTOM');

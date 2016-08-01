@@ -47,10 +47,14 @@ const ListModal = React.createClass({
         overflowY: 'scroll',
         overflowX: 'hidden'
       }
+      let containerStyles = {
+        background: 'none'
+      }
       docModal = (
         <Modal
         onScroll={this.scroll}
         modalStyles={docModalStyles}
+        containerStyles={containerStyles}
         onEndReached={this.scrolledToBottomOnDoc}
         docId={this.state.docToShow._id}
         >
