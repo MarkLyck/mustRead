@@ -18,6 +18,9 @@ const ListModal = React.createClass({
     })
     store.docs.fetch()
   },
+  componentWillUnmount: function() {
+    store.docs.off()
+  },
   openDoc: function(doc) {
     this.setState({showDoc: true, docToShow: doc})
   },

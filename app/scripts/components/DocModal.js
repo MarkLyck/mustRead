@@ -27,7 +27,6 @@ const DocModal = React.createClass({
     this.setState({showModal: false, confirmed: true})
   },
   componentDidMount: function() {
-    console.log(this.refs.docCheckbox);
     store.session.on('change', this.setSeenBottom)
   },
   componentWillUnmount: function() {
@@ -61,22 +60,17 @@ const DocModal = React.createClass({
 
 
     let markAsRead;
-    console.log('seenBottom: ', this.state.seenBottom);
     if (!this.state.seenBottom) {
-      console.log('### HAVNT SEEN BOTTOM');
       markAsRead = (<label className="mark-as-read disabled" htmlFor="doc-checkbox">
         <p>Read document</p>
         {checkBox}
       </label>)
     } else {
-      console.log('### SEEN BOTTOM');
       markAsRead = (<label className="mark-as-read" htmlFor="doc-checkbox" onChange={this.showModal}>
         <p>Mark as read</p>
         {checkBox}
       </label>)
     }
-
-    console.log(markAsRead);
 
     return (
       <div id="document-modal" ref="documentModal">
