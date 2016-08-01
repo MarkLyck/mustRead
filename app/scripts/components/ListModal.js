@@ -34,11 +34,16 @@ const ListModal = React.createClass({
     })
     let docModal;
     if (this.state.showDoc) {
-      
       let unParsedHTML = this.state.docToShow.body
       let parsedHTML = ReactHtmlParser(unParsedHTML)
+      let docModalStyles = {
+        height: '80%',
+        width: '80%',
+        overflowY: 'scroll',
+        overflowX: 'hidden'
+      }
       docModal = (
-        <Modal>
+        <Modal modalStyles={docModalStyles}>
           <DocModal closeDoc={this.closeDoc} doc={this.state.docToShow}>
             {parsedHTML}
           </DocModal>
@@ -48,7 +53,7 @@ const ListModal = React.createClass({
     return (
       <div className="modal-container">
         <div className="modal">
-          <ul>
+          <ul id="doc-list">
             {docList}
           </ul>
         </div>

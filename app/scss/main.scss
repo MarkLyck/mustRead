@@ -2,8 +2,15 @@
 @import "variables";
 @import "modal";
 @import "header";
+@import "listModal";
 
 a {
   color: #fff;
   text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

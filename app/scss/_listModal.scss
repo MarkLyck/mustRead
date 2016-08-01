@@ -1,0 +1,20 @@
+#doc-list {
+  .doc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    i {
+      font-size: 1.5rem;
+      margin-right: 20px;
+      color: rgba(0,0,0,0.5);
+    }
+    .checked {
+      color: $check-color;
+    }
+    &:hover {
+      cursor: pointer;
+      background: darken(#fff, 5%);
+    }
+  }
+}
