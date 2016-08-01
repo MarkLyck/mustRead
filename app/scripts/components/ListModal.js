@@ -51,7 +51,7 @@ const ListModal = React.createClass({
         overflowX: 'hidden'
       }
       let containerStyles = {
-        background: 'none'
+        background: 'rgba(0,0,0,0.3)'
       }
       docModal = (
         <Modal
@@ -67,8 +67,13 @@ const ListModal = React.createClass({
         </Modal>
       )
     }
+    let listModalContainerStyles = {
+      height: 'calc(100vh - 75px)',
+      top: '75px',
+      zIndex: '30',
+    }
     return (
-      <div className="modal-container">
+      <div className="modal-container" style={listModalContainerStyles}>
         <div className="modal">
           <ul id="doc-list">
             {docList}
