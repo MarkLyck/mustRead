@@ -394,7 +394,7 @@ optgroup {
 textarea {
   overflow: auto; }
 
-#list-modal-container {
+.modal-container {
   position: fixed;
   top: 0;
   right: 0;
@@ -403,24 +403,35 @@ textarea {
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center; }
-  #list-modal-container #list-modal {
+  align-items: center;
+  z-index: 10; }
+  .modal-container .modal {
     background: #fff;
     width: 60%; }
 
-#doc-modal-container {
-  position: fixed;
+header {
+  position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  height: 75px;
+  background: #25bb8e;
+  z-index: 20;
+  box-sizing: border-box;
   display: flex;
-  justify-content: center;
-  align-items: center; }
-  #doc-modal-container #doc-modal {
-    background: #fff;
-    width: 60%;
-    height: 80%; }
+  justify-content: flex-end; }
+  header nav {
+    display: flex; }
+    header nav a {
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+
+a {
+  color: #fff;
+  text-decoration: none; }
 
 /*# sourceMappingURL=main.css.map */
