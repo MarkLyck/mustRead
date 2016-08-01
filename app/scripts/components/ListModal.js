@@ -12,6 +12,9 @@ const ListModal = React.createClass({
   getInitialState: function() {
     return {docs: store.docs.toJSON(), showDoc: false, docToShow: ''}
   },
+  scroll: function() {
+    console.log('hi');
+  },
   componentDidMount: function() {
     store.docs.on('update', () => {
       this.setState({docs: store.docs.toJSON()})
@@ -19,11 +22,16 @@ const ListModal = React.createClass({
     store.docs.fetch()
   },
   openDoc: function(doc) {
-    console.log('open: ', doc);
     this.setState({showDoc: true, docToShow: doc})
   },
   closeDoc: function() {
     this.setState({showDoc: false})
+  },
+  scrolledToBottomOnDoc: function(docId) {
+    console.log('SCROLLED TO BOTTOM OF: ', docId);
+    let scrolledToBottoms = store.session.get('scrolledToBottom')
+    scrolledToBottoms.push(docId)
+    store.session.set('scrolledToBottom', scrolledToBottoms)
   },
   render: function() {
     let docList = this.state.docs.map((doc,i) => {
@@ -43,7 +51,7 @@ const ListModal = React.createClass({
         overflowX: 'hidden'
       }
       docModal = (
-        <Modal modalStyles={docModalStyles}>
+        <Modal onScroll={this.scroll} modalStyles={docModalStyles} onEndReached={this.scrolledToBottomOnDoc} docId={this.state.docToShow._id}>
           <DocModal closeDoc={this.closeDoc} doc={this.state.docToShow}>
             {parsedHTML}
           </DocModal>

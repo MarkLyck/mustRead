@@ -8,7 +8,8 @@ const Session = Backbone.Model.extend({
   idAttribute: '_id',
   defaults: {
     username: '',
-    read: []
+    read: [],
+    scrolledToBottom: [],
   },
   parse: function(response) {
     if (response) {
