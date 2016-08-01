@@ -28,6 +28,7 @@ const ListModal = React.createClass({
     let scrolledToBottoms = store.session.get('scrolledToBottom')
     scrolledToBottoms.push(docId)
     store.session.set('scrolledToBottom', scrolledToBottoms)
+    store.session.trigger('change')
   },
   render: function() {
     let docList = this.state.docs.map((doc,i) => {

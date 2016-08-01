@@ -11,8 +11,6 @@ const Modal = React.createClass({
   scroll: function() {
     if($(this.refs.modal).scrollTop() + $(this.refs.modal).innerHeight() >= $(this.refs.modal)[0].scrollHeight -1)
     {
-      console.log('END REACHED!');
-      console.log('props: ', this.props);
       this.props.onEndReached(this.props.docId)
     }
   },

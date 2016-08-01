@@ -44,6 +44,9 @@
       cursor: pointer;
     }
   }
+  .disabled {
+    background-color: #555;
+  }
 }
 
 #confirmation-modal {
