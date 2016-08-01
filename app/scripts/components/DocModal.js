@@ -10,7 +10,7 @@ const DocModal = React.createClass({
     if (store.session.get('read').indexOf(this.props.doc._id) === -1) {
       return {showModal: false, confirmed: false, seenBottom: false}
     } else {
-      return {showModal: false, confirmed: true, seenBottom: false}
+      return {showModal: false, confirmed: true, seenBottom: true}
     }
   },
   showModal: function() {
@@ -20,14 +20,11 @@ const DocModal = React.createClass({
     this.setState({showModal: false, confirmed: false})
   },
   confirmRead: function() {
-    let seenDocuments = store.session.get('scrolledToBottom')
-    if (seenDocuments.indexOf(this.props.doc._id) !== -1) {
-      let documentsRead = store.session.get('read')
-      documentsRead.push(this.props.doc._id)
-      store.session.set('read', documentsRead)
-      store.session.updateUser()
-      this.setState({showModal: false, confirmed: true})
-    }
+    let documentsRead = store.session.get('read')
+    documentsRead.push(this.props.doc._id)
+    store.session.set('read', documentsRead)
+    store.session.updateUser()
+    this.setState({showModal: false, confirmed: true})
   },
   componentDidMount: function() {
     console.log(this.refs.docCheckbox);
@@ -43,7 +40,6 @@ const DocModal = React.createClass({
     }
   },
   render: function() {
-
     let confirmationModal;
     if (this.state.showModal) {
       confirmationModal = (
@@ -57,7 +53,6 @@ const DocModal = React.createClass({
     }
 
     let checkBox = (<input
-      onChange={this.showModal}
       id="doc-checkbox"
       type="checkbox"
       ref="docCheckbox"
