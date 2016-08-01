@@ -1,8 +1,11 @@
+import $ from 'jquery'
 import React from 'react'
+import ReactHtmlParser from 'react-html-parser';
 
 import store from '../store'
 
 import DocItem from './DocItem'
+import Modal from './Modal'
 import DocModal from './DocModal'
 
 const ListModal = React.createClass({
@@ -10,19 +13,19 @@ const ListModal = React.createClass({
     return {docs: store.docs.toJSON(), showDoc: false, docToShow: ''}
   },
   componentDidMount: function() {
-    store.docs.on('change', () => {
+    store.docs.on('update', () => {
       this.setState({docs: store.docs.toJSON()})
     })
+    store.docs.fetch()
   },
   openDoc: function(doc) {
     console.log('open: ', doc);
-    this.setState({showDoc: true, docToShow: doc.body})
+    this.setState({showDoc: true, docToShow: doc})
   },
   closeDoc: function() {
     this.setState({showDoc: false})
   },
   render: function() {
-    console.log(this.state);
     let docList = this.state.docs.map((doc,i) => {
       return (<DocItem
         doc={doc}
@@ -31,15 +34,20 @@ const ListModal = React.createClass({
     })
     let docModal;
     if (this.state.showDoc) {
+      
+      let unParsedHTML = this.state.docToShow.body
+      let parsedHTML = ReactHtmlParser(unParsedHTML)
       docModal = (
-        <DocModal closeDoc={this.closeDoc}>
-          {this.state.docToShow}
-        </DocModal>
+        <Modal>
+          <DocModal closeDoc={this.closeDoc} doc={this.state.docToShow}>
+            {parsedHTML}
+          </DocModal>
+        </Modal>
       )
     }
     return (
-      <div id="list-modal-container">
-        <div id="list-modal">
+      <div className="modal-container">
+        <div className="modal">
           <ul>
             {docList}
           </ul>

@@ -1,10 +1,13 @@
 import React from 'react'
 
+import Header from './Header'
+
+
 const App = React.createClass({
   render: function() {
     return (
       <div id="app">
-        Hi from app
+        <Header/>
         {this.props.children}
       </div>
     )

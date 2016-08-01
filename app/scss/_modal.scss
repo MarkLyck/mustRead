@@ -1,4 +1,4 @@
-#doc-modal-container {
+.modal-container {
   position: fixed;
   top: 0;
   right: 0;
@@ -8,9 +8,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  #doc-modal {
+  z-index: 10;
+  .modal {
     background: #fff;
     width: 60%;
-    height: 80%;
   }
 }

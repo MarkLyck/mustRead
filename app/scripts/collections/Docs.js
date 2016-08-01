@@ -11,11 +11,14 @@ const Docs = backbone.Collection.extend({
   model: Doc,
   createDocs: function() {
     data.forEach((doc) => {
-      this.add({
+      this.create({
         title: doc.title,
         body: doc.body
       })
     })
+  },
+  getDocs: function() {
+    this.fetch()
   }
 })
 

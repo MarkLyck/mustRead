@@ -1,4 +1,9 @@
 @import "../../node_modules/normalize-scss/sass/normalize/import-now";
 @import "variables";
-@import "listModal";
-@import "docModal";
+@import "modal";
+@import "header";
+
+a {
+  color: #fff;
+  text-decoration: none;
+}

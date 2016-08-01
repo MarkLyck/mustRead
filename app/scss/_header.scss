@@ -1,0 +1,23 @@
+header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 75px;
+  background: $primary-color;
+  z-index: 20;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  nav {
+    display: flex;
+    a {
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
