@@ -1,0 +1,66 @@
+#document-modal {
+  // position: relative;
+  #close-button {
+    background: none;
+    border: none;
+    position: fixed;
+    right: 12.5%;
+    top: 12%;
+    font-size: 1.5rem;
+    color: #555;
+    &:hover {
+      cursor: pointer;
+      color: #ff006b;
+    }
+  }
+  #doc-title {
+    padding: 40px;
+    margin: 0;
+  }
+  #body-text {
+    padding: 0 40px;
+    p {
+      margin: 40px 0;
+    }
+    p:first-child {
+      margin-top: 0;
+    }
+  }
+  .mark-as-read {
+    position: fixed;
+    right: 10%;
+    bottom: 2%;
+    background: $primary-color;
+    padding: 0 10px;
+    color: #fff !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    input {
+      margin-left: 10px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+#confirmation-modal {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  #confirm-read {
+    margin-top: 10px;
+  }
+  #cancel-read {
+    background: none;
+    color: #555;
+    #cancel-span {
+      color: #ff006b;
+    }
+    &:hover {
+      color: #ff006b;
+    }
+  }
+}

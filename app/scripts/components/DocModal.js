@@ -12,51 +12,36 @@ const DocModal = React.createClass({
     } else {
       return {showModal: false, confirmed: true}
     }
-
   },
   showModal: function() {
-    if (store.session.get('read').indexOf(this.props.doc._id) === -1) {
-      this.setState({showModal: true})
-    } else {
-      throw new Error('You have already marked this document as read.')
-    }
+    this.setState({showModal: true})
   },
   cancelConfirmation: function() {
     this.setState({showModal: false, confirmed: false})
   },
   confirmRead: function() {
     let seenDocuments = store.session.get('scrolledToBottom')
-    console.log("seen Documents: ", seenDocuments);
     if (seenDocuments.indexOf(this.props.doc._id) !== -1) {
       let documentsRead = store.session.get('read')
-      documentsRead.push(this.props.doc.id)
+      documentsRead.push(this.props.doc._id)
       store.session.set('read', documentsRead)
       store.session.updateUser()
       this.setState({showModal: false, confirmed: true})
     }
   },
-  componentDidMount: function() {
-    console.log(this.props.doc.id);
-    store.session.on('change', () => {
-      console.log('SESSION CHANGED');
-    })
-    console.log('COMPONENT DID MOUNT');
-  },
-  componentWillUnmount: function() {
-    store.session.off()
-  },
   render: function() {
-    let confirmationModal;
 
+    let confirmationModal;
     if (this.state.showModal) {
       confirmationModal = (
         <Modal closeModal={this.cancelConfirmation}>
-          <ConfirmModal confirmRead={this.confirmRead} cancelConfirmation={this.cancelConfirmation} doc={this.props.doc}/>
+          <ConfirmModal
+          confirmRead={this.confirmRead}
+          cancelConfirmation={this.cancelConfirmation}
+          doc={this.props.doc}/>
         </Modal>
       )
     }
-
-
 
     let checkBox = (<input
       onChange={this.showModal}
@@ -68,10 +53,11 @@ const DocModal = React.createClass({
 
     return (
       <div id="document-modal" ref="documentModal">
-        <button onClick={this.props.closeDoc}>X</button>
+        <button id="close-button" onClick={this.props.closeDoc}><i className="fa fa-times" aria-hidden="true"></i></button>
+        <h2 id="doc-title">{this.props.doc.title}</h2>
         {this.props.children}
-        <label htmlFor="doc-checkbox" onChange={this.showModal}>
-          Mark as read
+        <label className="mark-as-read" htmlFor="doc-checkbox" onChange={this.showModal}>
+          <p>Mark as read</p>
           {checkBox}
         </label>
         {confirmationModal}
