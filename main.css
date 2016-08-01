@@ -400,7 +400,7 @@ textarea {
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -485,6 +485,8 @@ header {
     margin-left: 10px; }
   #document-modal .mark-as-read:hover {
     cursor: pointer; }
+#document-modal .disabled {
+  background-color: #555; }
 
 #confirmation-modal {
   padding: 20px 40px;
@@ -499,6 +501,14 @@ header {
       color: #ff006b; }
     #confirmation-modal #cancel-read:hover {
       color: #ff006b; }
+
+.form-modal {
+  display: flex;
+  flex-direction: column;
+  padding: 40px; }
+  .form-modal input {
+    padding: 20px;
+    margin-bottom: 20px; }
 
 a {
   color: #fff;
