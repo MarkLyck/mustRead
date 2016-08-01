@@ -424,17 +424,22 @@ header {
     display: flex; }
     header nav a {
       height: 100%;
+      width: 100px;
       padding: 20px;
       box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: center; }
+      header nav a:hover {
+        background: #fff;
+        color: #555; }
 
 #doc-list .doc-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px; }
+  padding: 20px;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.5); }
   #doc-list .doc-item i {
     font-size: 1.5rem;
     margin-right: 20px;
@@ -445,13 +450,78 @@ header {
     cursor: pointer;
     background: #f2f2f2; }
 
+#document-modal #close-button {
+  background: none;
+  border: none;
+  position: fixed;
+  right: 12.5%;
+  top: 12%;
+  font-size: 1.5rem;
+  color: #555; }
+  #document-modal #close-button:hover {
+    cursor: pointer;
+    color: #ff006b; }
+#document-modal #doc-title {
+  padding: 40px;
+  margin: 0; }
+#document-modal #body-text {
+  padding: 0 40px; }
+  #document-modal #body-text p {
+    margin: 40px 0; }
+  #document-modal #body-text p:first-child {
+    margin-top: 0; }
+#document-modal .mark-as-read {
+  position: fixed;
+  right: 10%;
+  bottom: 2%;
+  background: #25bb8e;
+  padding: 0 10px;
+  color: #fff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box; }
+  #document-modal .mark-as-read input {
+    margin-left: 10px; }
+  #document-modal .mark-as-read:hover {
+    cursor: pointer; }
+
+#confirmation-modal {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column; }
+  #confirmation-modal #confirm-read {
+    margin-top: 10px; }
+  #confirmation-modal #cancel-read {
+    background: none;
+    color: #555; }
+    #confirmation-modal #cancel-read #cancel-span {
+      color: #ff006b; }
+    #confirmation-modal #cancel-read:hover {
+      color: #ff006b; }
+
 a {
   color: #fff;
   text-decoration: none; }
+
+h1, h2, h3 {
+  font-weight: lighter; }
 
 ul {
   list-style: none;
   margin: 0;
   padding: 0; }
+
+button, input {
+  outline: none; }
+
+button {
+  background: #25bb8e;
+  border: none;
+  color: #fff;
+  padding: 20px; }
+  button:hover {
+    cursor: pointer;
+    background: #21a67e; }
 
 /*# sourceMappingURL=main.css.map */
